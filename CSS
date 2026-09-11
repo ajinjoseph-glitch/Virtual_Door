@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.door-wrapper {
+    perspective: 1000px;
+    margin-bottom: 40px;
+}
+
+.door {
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(90deg, #8b4513 0%, #d2691e 100%);
+    border: 3px solid #654321;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    user-select: none;
+}
+
+.door:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.door.open {
+    transform: rotateY(120deg);
+}
+
+.door-handle {
+    width: 15px;
+    height: 15px;
+    background: #ffd700;
+    border-radius: 50%;
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    font-size: 18px;
+    margin-top: 30px;
+    min-height: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.message.show {
+    opacity: 1;
+}
+
+.click-counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.final-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px 60px;
+    border-radius: 10px;
+    font-size: 24px;
+    border: 2px solid #ffd700;
+    z-index: 1000;
+    animation: fadeInScale 0.5s ease;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .door {
+        width: 150px;
+        height: 225px;
+    }
+    
+    .final-message {
+        padding: 30px 40px;
+        font-size: 18px;
+    }
+}
