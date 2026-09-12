@@ -1,5 +1,5 @@
 let clickCount = 0;
-const MAX_CLICKS = 10; // Adjust this for difficulty
+const MAX_CLICKS = 20; // Adjust this for difficulty
 
 const doorElement = document.getElementById('door');
 const messageElement = document.getElementById('message');
@@ -25,7 +25,7 @@ doorElement.addEventListener('click', () => {
     if (clickCount <= MAX_CLICKS) {
         messageElement.textContent = messages[clickCount - 1] || `Click #${clickCount}`;
     } else {
-        messageElement.textContent = '🎉 Congratulations. You have achieved nothing. 🎉';
+        messageElement.textContent = '🎉 Congratulations. You have achieved nothing. 🎉, Please play to achieve nothing again';
         messageElement.classList.add('celebration');
         doorElement.style.pointerEvents = 'none';
         return;
